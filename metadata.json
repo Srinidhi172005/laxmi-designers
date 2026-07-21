@@ -1,0 +1,6 @@
+{
+  "name": "Laxmi Designers",
+  "description": "Premium Indian ethnic fashion studio specializing in custom couture, bridal lehengas, sarees, and heritage designer wear.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

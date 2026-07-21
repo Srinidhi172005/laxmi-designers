@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Cinzel = Roman capitals matching the logo wordmark; Playfair for elegant serif; Montserrat for body */
+  --font-display: "Cinzel", "Playfair Display", Georgia, serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Montserrat", system-ui, sans-serif;
+
+  /* Brand crimson — matched to the Laxmi Designers logo (rich wine red) */
+  --color-maroon-50: #FCEEEF;
+  --color-maroon-100: #F8D2D6;
+  --color-maroon-200: #EFA1A9;
+  --color-maroon-300: #E06D79;
+  --color-maroon-400: #CB3D4C;
+  --color-maroon-500: #A81F2D;
+  --color-maroon-600: #8A1622; /* Logo crimson (mid) */
+  --color-maroon-700: #6B0F1A; /* Base brand deep crimson */
+  --color-maroon-800: #490A12;
+  --color-maroon-900: #2A0509; /* Near-black maroon */
+  --color-maroon-950: #1A0508; /* Deepest surface (matches logo shadow) */
+
+  /* Brand gold — classic warm metallic gold matching the logo lettering */
+  --color-gold-50: #FBF6E9;
+  --color-gold-100: #F7EBC4;
+  --color-gold-200: #EFD99B;
+  --color-gold-300: #E8C871; /* Bright gold highlight */
+  --color-gold-400: #DDB84E;
+  --color-gold-500: #D4AF37; /* Base brand gold */
+  --color-gold-600: #B8952C;
+  --color-gold-700: #9A7B22; /* Antique gold shadow */
+  --color-gold-800: #6F5817;
+  --color-gold-900: #4A3A0E;
+
+  --color-cream-50: #FAF7F2;
+  --color-cream-100: #F8F1E4; /* Ivory / warm cream base */
+  --color-cream-200: #EFE2CE;
+  --color-cream-300: #DEC2A1;
+  --color-cream-400: #CFA374;
+
+  --color-espresso: #1A1210;
+}
+
+/* Custom global rules */
+body {
+  font-family: var(--font-sans);
+  color: var(--color-espresso);
+  background-color: var(--color-cream-50);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Luxury transitions and borders */
+.luxury-border-gold {
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.luxury-border-gold-heavy {
+  border-color: rgba(212, 175, 55, 1);
+}
+
+/* Gold foil text shimmer effect */
+.text-gold-shimmer {
+  background: linear-gradient(135deg, #9A7B22 0%, #E8C871 25%, #D4AF37 50%, #E8C871 75%, #9A7B22 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gold-shimmer-pulse 8s ease infinite;
+}
+
+@keyframes gold-shimmer-pulse {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Indian ornamental pattern overlays (using SVG pattern concept in background or border) */
+.paisley-bg-pattern {
+  background-image: radial-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.luxury-card-shadow {
+  box-shadow: 0 4px 20px -2px rgba(94, 11, 21, 0.05), 0 2px 8px -1px rgba(212, 175, 55, 0.03);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1A0508;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border: 2px solid #1A0508;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E8C871;
+}
+
+/* Premium Luxury Navigation Styles */
+.nav-logo-glow {
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
+}
+
+.nav-link-underline {
+  position: relative;
+}
+.nav-link-underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -4px;
+  left: 0;
+  background-color: #D4AF37;
+  transform-origin: bottom center;
+  transition: transform 0.3s ease-out;
+}
+.nav-link-underline:hover::after,
+.nav-link-underline.is-active::after {
+  transform: scaleX(1);
+}
+
+.cta-button-shadow:hover {
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+/* Infinite marquee (used by SpecialtiesMarquee & TestimonialsMarquee) */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee-scroll var(--marquee-duration, 40s) linear infinite;
+  will-change: transform;
+}
+.marquee-pause:hover .animate-marquee {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee { animation: none; }
+}
+
